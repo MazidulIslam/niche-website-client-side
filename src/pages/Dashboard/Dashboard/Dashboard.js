@@ -15,19 +15,25 @@ import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import useAuth from "../../../hooks/useAuth";
+import { Switch, Route, useRouteMatch } from "react-router";
+import { Link } from "react-router-dom";
+import DashboardHome from "../DashboardHome/DashboardHome";
 import { Button } from "@mui/material";
-import { Switch, Route, Link, useRouteMatch, NavLink } from "react-router-dom";
-// import MakeAdmin from "../MakeAdmin/MakeAdmin";
-// import useAuth from "../../../hooks/useAuth";
-import AdminRoute from "../../Login/AdminRoute/AdminRoute";
+import MyOrders from "../MyOrders/MyOrders";
+import Pay from "../Pay/Pay";
+import AddReview from "../AddReview/AddReview";
+import AddCycles from "../AddCycles/AddCycles";
+import MakeAdmin from "../MakeAdmin/MakeAdmin";
+import ManageOrders from "../ManageOrders/ManageOrders";
 
 const drawerWidth = 200;
 
 const Dashboard = (props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const { userLogout } = useAuth();
   let { path, url } = useRouteMatch();
-  //   const { admin } = useAuth();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -36,79 +42,69 @@ const Dashboard = (props) => {
   const drawer = (
     <div>
       <Toolbar />
-
-      <Divider />
-      <NavLink
-        style={{
-          textDecoration: "none",
-          backgroundColor: "green",
-          color: "white",
-          padding: "5px",
-          borderRadius: "5px",
-          marginRight: "5px",
-          marginTop: "5px",
-        }}
-        as={Link}
-        to={`${url}`}
-      >
-        <Button style={{ width: "90%" }} color="inherit">
-          Dashboard
-        </Button>
-      </NavLink>
-      <NavLink
-        style={{
-          textDecoration: "none",
-          backgroundColor: "green",
-          color: "white",
-          padding: "5px",
-          borderRadius: "5px",
-          marginRight: "5px",
-          marginTop: "5px",
-        }}
-        as={Link}
-        to="appointment"
-      >
-        <Button style={{ width: "90%" }} color="inherit">
-          Book Appointment
-        </Button>
-      </NavLink>
-      {/* {admin && (
-        <Box>
-          <NavLink
-            style={{
-              textDecoration: "none",
-              backgroundColor: "green",
-              color: "white",
-              padding: "5px",
-              borderRadius: "5px",
-              marginRight: "5px",
-              marginTop: "5px",
-            }}
-            as={Link}
-            to={`${url}/makeAdmin`}
-          >
-            <Button style={{ width: "90%" }} color="inherit">
-              Make Admin
-            </Button>
-          </NavLink>
-        </Box>
-      )} */}
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+      <Box style={{ height: "70vh" }}>
+        {/* link start */}
+        <Link to={`${url}`} style={{ textDecoration: "none" }}>
+          <Button style={{ color: "#24C7AC" }}>Dashboard</Button>
+        </Link>{" "}
+        <br />
+        <Link to="/cycles" style={{ textDecoration: "none" }}>
+          <Button style={{ color: "#24C7AC" }}>Purchase Cycle</Button>
+        </Link>{" "}
+        <br />
+        <Link to={`${url}/myOrders`} style={{ textDecoration: "none" }}>
+          <Button style={{ color: "#24C7AC" }}>My Orders</Button>
+        </Link>
+        <br />
+        <Link
+          to={`${url}/pay`}
+          style={{ textDecoration: "none", color: "#24C7AC" }}
+        >
+          <Button style={{ color: "#24C7AC" }}>Pay</Button>
+        </Link>
+        <br />
+        <Link
+          to={`${url}/addReview`}
+          style={{ textDecoration: "none", color: "#24C7AC" }}
+        >
+          <Button style={{ color: "#24C7AC" }}>Add Review</Button>
+        </Link>
+        <br />
+        <Link
+          to={`${url}/addCycles`}
+          style={{ textDecoration: "none", color: "#24C7AC" }}
+        >
+          <Button style={{ color: "#24C7AC" }}>Add Cycles</Button>
+        </Link>
+        <br />
+        <Link
+          to={`${url}/makeAdmin`}
+          style={{ textDecoration: "none", color: "#24C7AC" }}
+        >
+          <Button style={{ color: "#24C7AC" }}>Make Admin</Button>
+        </Link>
+        <br />
+        <Link
+          to={`${url}/manageOrders`}
+          style={{ textDecoration: "none", color: "#24C7AC" }}
+        >
+          <Button style={{ color: "#24C7AC" }}>Manage Orders</Button>
+        </Link>
+        <br />
+      </Box>
+      <Box style={{ height: "10vh" }}>
+        <Link to="./" style={{ textDecoration: "none" }}>
+          <Button variant="contained" color="error" onClick={userLogout}>
+            Logout
+          </Button>
+        </Link>
+      </Box>
+      {/* //link end */}
     </div>
   );
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
-
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -131,7 +127,7 @@ const Dashboard = (props) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Dashboard
+            Quicle
           </Typography>
         </Toolbar>
       </AppBar>
@@ -183,9 +179,28 @@ const Dashboard = (props) => {
       >
         <Toolbar />
         <Switch>
-          {/* <AdminRoute path={`${path}/makeAdmin`}>
+          <Route exact path={`${path}`}>
+            <DashboardHome></DashboardHome>
+          </Route>
+
+          <Route path={`${path}/myOrders`}>
+            <MyOrders></MyOrders>
+          </Route>
+          <Route path={`${path}/pay`}>
+            <Pay></Pay>
+          </Route>
+          <Route path={`${path}/addReview`}>
+            <AddReview></AddReview>
+          </Route>
+          <Route path={`${path}/addCycles`}>
+            <AddCycles></AddCycles>
+          </Route>
+          <Route path={`${path}/makeAdmin`}>
             <MakeAdmin></MakeAdmin>
-          </AdminRoute> */}
+          </Route>
+          <Route path={`${path}/manageOrders`}>
+            <ManageOrders></ManageOrders>
+          </Route>
         </Switch>
       </Box>
     </Box>

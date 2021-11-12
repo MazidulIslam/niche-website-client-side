@@ -1,31 +1,18 @@
 import { Container, Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HomeCycle from "../HomeCycle/HomeCycle";
 
-const services = [
-  {
-    name: "fluoride Treatment",
-    description:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit Numquam aspernatur nam perferendis quae nobis id laudantium iste tempora cumque, perspiciatis impedit tempore amet dolores nemo, aliquid quasi reiciendis! Adipisci, nesciunt.",
-    img: "fluoride",
-  },
-  {
-    name: "Cavity Filling",
-    description:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit Numquam aspernatur nam perferendis quae nobis id laudantium iste tempora cumque, perspiciatis impedit tempore amet dolores nemo, aliquid quasi reiciendis! Adipisci, nesciunt.",
-    img: "cavity",
-  },
-
-  {
-    name: "Teeth Whitening",
-    description:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit Numquam aspernatur nam perferendis quae nobis id laudantium iste tempora cumque, perspiciatis impedit tempore amet dolores nemo, aliquid quasi reiciendis! Adipisci, nesciunt.",
-    img: "whitening",
-  },
-];
-
 const HomeCycles = () => {
+  const [cycles, setCycles] = useState([]);
+  useEffect(() => {
+    const url = `http://localhost:7000/cycles`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        setCycles(data.slice(0, 6));
+      });
+  }, []);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Container>
@@ -34,18 +21,18 @@ const HomeCycles = () => {
           variant="h6"
           component="div"
         >
-          OUR SERVICES
+          Cycles
         </Typography>
         <Typography sx={{ fontWeight: 600 }} variant="h4" component="div">
-          Services We Provide
+          Explore Our Cycles
         </Typography>
         <Grid
           container
           spacing={{ xs: 2, md: 3 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
-          {services.map((service) => (
-            <HomeCycle key={service.name} service={service}></HomeCycle>
+          {cycles.map((cycle) => (
+            <HomeCycle key={cycle._id} cycle={cycle}></HomeCycle>
           ))}
         </Grid>
       </Container>
