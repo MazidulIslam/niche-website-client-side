@@ -2,12 +2,11 @@ import { CardMedia, Grid } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-const HomeCycle = (props) => {
+const Cycle = (props) => {
   const { title, price, image, _id } = props.cycle;
   return (
     <Grid item xs={12} sm={6} md={4}>
@@ -42,4 +41,4 @@ const HomeCycle = (props) => {
   );
 };
 
-export default HomeCycle;
+export default Cycle;

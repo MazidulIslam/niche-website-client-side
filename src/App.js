@@ -5,6 +5,8 @@ import Home from "./pages/Home/Home/Home";
 import Login from "./pages/Login/Login/Login";
 import Register from "./pages/Login/Register/Register";
 import Dashboard from "../src/pages/Dashboard/Dashboard/Dashboard";
+import CycleDetails from "./pages/CycleDetails/CycleDetails";
+import Cycles from "./pages/Cycles/Cycles";
 
 function App() {
   return (
@@ -20,6 +22,12 @@ function App() {
             </Route>
             <Route path="/dashboard">
               <Dashboard></Dashboard>
+            </Route>
+            <Route path="/cycles">
+              <Cycles></Cycles>
+            </Route>
+            <Route path="/cycleDetails/:cycleId">
+              <CycleDetails></CycleDetails>
             </Route>
             <Route exact path="/login">
               <Login></Login>
