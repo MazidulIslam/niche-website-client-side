@@ -8,7 +8,7 @@ import login from "./login.jpg";
 const Login = () => {
   const location = useLocation();
   const history = useHistory();
-  const { user, userLogin, authError } = useAuth();
+  const { user, userLogin, authError, signInWithGoogle } = useAuth();
   const {
     reset,
     register,
@@ -19,12 +19,15 @@ const Login = () => {
     userLogin(email, password, location, history);
     reset();
   };
+  const handleGoogleSignIn = () => {
+    signInWithGoogle(location, history);
+  };
 
   return (
     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
       <Grid item xs={12} sm={12} md={6}>
         <form
-          style={{ width: "100%", marginTop: "25%" }}
+          style={{ width: "100%", marginTop: "15%" }}
           onSubmit={handleSubmit(onSubmit)}
         >
           <h1 style={{ color: "#24C7AC" }}>Please Login</h1>
@@ -90,18 +93,34 @@ const Login = () => {
             type="submit"
           />
           <br />
-
-          <Link
-            style={{
-              fontSize: "1.1rem",
-              textDecoration: "none",
-              color: "#24C7AC",
-            }}
-            to="./register"
-          >
-            New to Quicle? Please Register
-          </Link>
+          <p>or</p>
         </form>
+        <Button
+          onClick={handleGoogleSignIn}
+          style={{
+            width: "56%",
+            backgroundColor: "#24C7AC",
+            padding: "10px",
+            fontSize: "1.3rem",
+          }}
+          variant="contained"
+        >
+          Continue With Google
+        </Button>
+        <br />
+        <br />
+
+        <Link
+          style={{
+            fontSize: "1.1rem",
+            textDecoration: "none",
+            color: "#24C7AC",
+          }}
+          to="./register"
+        >
+          New to Quicle? Please Register
+        </Link>
+        <br />
         <Link style={{ textDecoration: "none" }} to="/home">
           <Button style={{ backgroundColor: "#24C7AC" }} variant="contained">
             Go Back

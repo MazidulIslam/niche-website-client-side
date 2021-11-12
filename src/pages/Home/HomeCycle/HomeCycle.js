@@ -10,7 +10,7 @@ import Typography from "@mui/material/Typography";
 const HomeCycle = (props) => {
   const { title, price, image, _id } = props.cycle;
   return (
-    <Grid item xs={12} sm={6} md={4}>
+    <Grid item xs={12} sm={4} md={4}>
       <Card
         sx={{ minWidth: 275, border: 1, borderRadius: 5, boxShadow: 3, my: 5 }}
       >

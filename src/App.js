@@ -7,6 +7,7 @@ import Register from "./pages/Login/Register/Register";
 import Dashboard from "../src/pages/Dashboard/Dashboard/Dashboard";
 import CycleDetails from "./pages/CycleDetails/CycleDetails";
 import Cycles from "./pages/Cycles/Cycles";
+import PrivateRoute from "./pages/Login/PrivateRoute/PrivateRoute";
 
 function App() {
   return (
@@ -26,9 +27,9 @@ function App() {
             <Route path="/cycles">
               <Cycles></Cycles>
             </Route>
-            <Route path="/cycleDetails/:cycleId">
+            <PrivateRoute path="/cycleDetails/:cycleId">
               <CycleDetails></CycleDetails>
-            </Route>
+            </PrivateRoute>
             <Route exact path="/login">
               <Login></Login>
             </Route>

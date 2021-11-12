@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useTheme } from "@mui/material/styles";
-import { Card, Grid } from "@mui/material";
+import { Card, Container, Grid } from "@mui/material";
 import Box from "@mui/material/Box";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
@@ -14,7 +14,6 @@ const Reviews = () => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setReviews(data);
       });
   }, []);
@@ -27,36 +26,60 @@ const Reviews = () => {
   };
 
   return (
-    <Grid xs={12} md={8} sx={{ m: "auto" }}>
-      <h1 style={{ color: "#24C7AC" }}>Reviews</h1>
-      <AutoPlaySwipeableViews
-        axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-        index={activeStep}
-        onChangeIndex={handleStepChange}
-        enableMouseEvents
-      >
-        {reviews.map((review, index) => (
-          <Grid>
-            <Typography
-              style={{
-                // clear: "both",
-                display: "block",
-                color: "#24C7AC",
-              }}
-              variant="body2"
-              component="div"
+    <Grid xs={12} md={12} sx={{ m: "auto" }}>
+      <h1 style={{ color: "#24C7AC" }}>Testimonials</h1>
+      <Box sx={{ flexgrow: 1 }}>
+        <Container>
+          <Grid
+            container
+            spacing={{ xs: 2, md: 2 }}
+            columns={{ xs: 12, sm: 12, md: 12 }}
+          >
+            <AutoPlaySwipeableViews
+              axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+              index={activeStep}
+              onChangeIndex={handleStepChange}
+              enableMouseEvents
             >
-              {review.reviewText}
-            </Typography>
-            <Typography variant="h6" component="div">
-              Ratings: {review.ratings}
-            </Typography>
-            <Typography variant="h4" component="div">
-              {review.name}
-            </Typography>
+              {reviews.map((review, index) => (
+                <Grid
+                  style={{ backgroundColor: "lightgray" }}
+                  item
+                  xs={12}
+                  sm={12}
+                  md={12}
+                  sx={{ m: 12, p: 10, borderRadius: "10px" }}
+                >
+                  <Typography
+                    style={{
+                      // clear: "both",
+                      display: "block",
+                      color: "#24C7AC",
+                    }}
+                    variant="body2"
+                    component="div"
+                  >
+                    <span style={{ fontSize: "3.3rem" }}>
+                      <sub>" </sub>
+                    </span>
+                    {review.reviewText}
+
+                    <span style={{ fontSize: "3.3rem" }}>
+                      <sub> "</sub>
+                    </span>
+                  </Typography>
+                  <Typography sx={{ mt: 5 }} variant="h6" component="div">
+                    Ratings: {review.ratings}
+                  </Typography>
+                  <Typography variant="h4" component="div">
+                    {review.name}
+                  </Typography>
+                </Grid>
+              ))}
+            </AutoPlaySwipeableViews>
           </Grid>
-        ))}
-      </AutoPlaySwipeableViews>
+        </Container>
+      </Box>
     </Grid>
   );
 };

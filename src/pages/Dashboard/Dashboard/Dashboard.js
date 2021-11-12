@@ -26,13 +26,14 @@ import AddReview from "../AddReview/AddReview";
 import AddCycles from "../AddCycles/AddCycles";
 import MakeAdmin from "../MakeAdmin/MakeAdmin";
 import ManageOrders from "../ManageOrders/ManageOrders";
+import AdminRoute from "../../Login/AdminRoute/AdminRoute";
 
 const drawerWidth = 200;
 
 const Dashboard = (props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const { userLogout } = useAuth();
+  const { userLogout, admin } = useAuth();
   let { path, url } = useRouteMatch();
 
   const handleDrawerToggle = () => {
@@ -42,7 +43,7 @@ const Dashboard = (props) => {
   const drawer = (
     <div>
       <Toolbar />
-      <Box style={{ height: "70vh" }}>
+      <Box>
         {/* link start */}
         <Link to={`${url}`} style={{ textDecoration: "none" }}>
           <Button style={{ color: "#24C7AC" }}>Dashboard</Button>
@@ -69,31 +70,34 @@ const Dashboard = (props) => {
         >
           <Button style={{ color: "#24C7AC" }}>Add Review</Button>
         </Link>
-        <br />
-        <Link
-          to={`${url}/addCycles`}
-          style={{ textDecoration: "none", color: "#24C7AC" }}
-        >
-          <Button style={{ color: "#24C7AC" }}>Add Cycles</Button>
-        </Link>
-        <br />
-        <Link
-          to={`${url}/makeAdmin`}
-          style={{ textDecoration: "none", color: "#24C7AC" }}
-        >
-          <Button style={{ color: "#24C7AC" }}>Make Admin</Button>
-        </Link>
-        <br />
-        <Link
-          to={`${url}/manageOrders`}
-          style={{ textDecoration: "none", color: "#24C7AC" }}
-        >
-          <Button style={{ color: "#24C7AC" }}>Manage Orders</Button>
-        </Link>
+        {admin && (
+          <Box>
+            <Link
+              to={`${url}/addCycles`}
+              style={{ textDecoration: "none", color: "#24C7AC" }}
+            >
+              <Button style={{ color: "#24C7AC" }}>Add Cycles</Button>
+            </Link>
+            <br />
+            <Link
+              to={`${url}/makeAdmin`}
+              style={{ textDecoration: "none", color: "#24C7AC" }}
+            >
+              <Button style={{ color: "#24C7AC" }}>Make Admin</Button>
+            </Link>
+
+            <Link
+              to={`${url}/manageOrders`}
+              style={{ textDecoration: "none", color: "#24C7AC" }}
+            >
+              <Button style={{ color: "#24C7AC" }}>Manage Orders</Button>
+            </Link>
+          </Box>
+        )}
         <br />
       </Box>
-      <Box style={{ height: "10vh" }}>
-        <Link to="./" style={{ textDecoration: "none" }}>
+      <Box>
+        <Link to="/" style={{ textDecoration: "none" }}>
           <Button variant="contained" color="error" onClick={userLogout}>
             Logout
           </Button>
@@ -192,15 +196,15 @@ const Dashboard = (props) => {
           <Route path={`${path}/addReview`}>
             <AddReview></AddReview>
           </Route>
-          <Route path={`${path}/addCycles`}>
+          <AdminRoute path={`${path}/addCycles`}>
             <AddCycles></AddCycles>
-          </Route>
-          <Route path={`${path}/makeAdmin`}>
+          </AdminRoute>
+          <AdminRoute path={`${path}/makeAdmin`}>
             <MakeAdmin></MakeAdmin>
-          </Route>
-          <Route path={`${path}/manageOrders`}>
+          </AdminRoute>
+          <AdminRoute path={`${path}/manageOrders`}>
             <ManageOrders></ManageOrders>
-          </Route>
+          </AdminRoute>
         </Switch>
       </Box>
     </Box>
