@@ -43,20 +43,20 @@ const Reviews = () => {
             >
               {reviews.map((review, index) => (
                 <Grid
-                  style={{ backgroundColor: "lightgray" }}
+                  style={{ backgroundColor: "#24C7AC" }}
                   item
                   xs={12}
                   sm={12}
                   md={12}
-                  sx={{ m: 12, p: 10, borderRadius: "10px" }}
+                  sx={{ m: 10, p: 10, borderRadius: "10px" }}
                 >
                   <Typography
                     style={{
                       // clear: "both",
                       display: "block",
-                      color: "#24C7AC",
+                      color: "white",
                     }}
-                    variant="body2"
+                    variant="h6"
                     component="div"
                   >
                     <span style={{ fontSize: "3.3rem" }}>
