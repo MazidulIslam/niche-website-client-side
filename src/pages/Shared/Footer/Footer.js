@@ -55,16 +55,17 @@ const Footer = () => {
             </h3>
           </div>
         </div>
-        <nav>
-          <div className="col-md-6 col-sm-12">
+        <div style={{ width: "100%", display: "flex" }}>
+          <p style={{ width: "50%" }}>
             <span>&copy;</span> Copyright 2021 <strong>Quicle</strong>
-          </div>
-          <div className="col-md-6 col-sm-12">
-            <p>
-              Devoloped by <Link to="/home">Mazidul Islam</Link>
-            </p>
-          </div>
-        </nav>
+          </p>
+          <p style={{ width: "50%" }}>
+            Devoloped by{" "}
+            <Link style={{ textDecoration: "none", color: "red" }} to="/home">
+              Mazidul Islam
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );
