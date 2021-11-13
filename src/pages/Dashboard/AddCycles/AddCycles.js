@@ -5,13 +5,15 @@ const AddCycles = () => {
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    axios.post("http://localhost:7000/cycles", data).then((res) => {
-      // console.log(res.data);
-      if (res.data.insertedId) {
-        alert("added successfully");
-        reset();
-      }
-    });
+    axios
+      .post("https://ancient-sands-65869.herokuapp.com/cycles", data)
+      .then((res) => {
+        // console.log(res.data);
+        if (res.data.insertedId) {
+          alert("added successfully");
+          reset();
+        }
+      });
   };
   return (
     <div>

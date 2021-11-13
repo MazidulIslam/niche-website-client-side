@@ -7,16 +7,19 @@ const AddReview = () => {
   const { user } = useAuth();
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
-    axios.post("http://localhost:7000/reviews", data).then((res) => {
-      if (res.data.insertedId) {
-        alert("Reviewed Successfully");
-        reset();
-      }
-    });
+    axios
+      .post("https://ancient-sands-65869.herokuapp.com/reviews", data)
+      .then((res) => {
+        if (res.data.insertedId) {
+          alert("Reviewed Successfully");
+          reset();
+        }
+      });
   };
   return (
     <div>
       <div style={{ width: "80%", margin: "20px auto" }}>
+        <h1 style={{ color: "#24C7AC" }}>Add Review Please</h1>
         <form
           onSubmit={handleSubmit(onSubmit)}
           style={{

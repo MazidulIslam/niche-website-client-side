@@ -6,7 +6,7 @@ import HomeCycle from "../HomeCycle/HomeCycle";
 const HomeCycles = () => {
   const [cycles, setCycles] = useState([]);
   useEffect(() => {
-    const url = `http://localhost:7000/cycles`;
+    const url = `https://ancient-sands-65869.herokuapp.com/cycles`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {

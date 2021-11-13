@@ -33,7 +33,7 @@ const drawerWidth = 200;
 const Dashboard = (props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const { userLogout, admin } = useAuth();
+  const { userLogout, admin, user } = useAuth();
   let { path, url } = useRouteMatch();
 
   const handleDrawerToggle = () => {
@@ -42,6 +42,11 @@ const Dashboard = (props) => {
 
   const drawer = (
     <div>
+      <Typography sx={{ mt: 2 }} variant="h6">
+        Logged In As:
+        <br />
+        {user?.email}
+      </Typography>
       <Toolbar />
       <Box>
         {/* link start */}

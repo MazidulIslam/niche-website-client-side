@@ -4,6 +4,7 @@ import AuthProvider from "./context/AuthProvider/AuthProvider";
 import Home from "./pages/Home/Home/Home";
 import Login from "./pages/Login/Login/Login";
 import Register from "./pages/Login/Register/Register";
+import NotFound from "./pages/NotFound/NotFound";
 import Dashboard from "../src/pages/Dashboard/Dashboard/Dashboard";
 import CycleDetails from "./pages/CycleDetails/CycleDetails";
 import Cycles from "./pages/Cycles/Cycles";
@@ -36,8 +37,8 @@ function App() {
             <Route exact path="/register">
               <Register></Register>
             </Route>
-            <Route exact path="*">
-              {/* <NotFound></NotFound> */}
+            <Route path="*">
+              <NotFound></NotFound>
             </Route>
           </Switch>
         </Router>

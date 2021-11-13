@@ -1,16 +1,16 @@
 import * as React from "react";
 import { useTheme } from "@mui/material/styles";
-import { Card, Container, Grid } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import Box from "@mui/material/Box";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
-import { CardContent, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const Reviews = () => {
   const [reviews, setReviews] = React.useState([]);
   React.useEffect(() => {
-    const url = `http://localhost:7000/reviews`;
+    const url = `https://ancient-sands-65869.herokuapp.com/reviews`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {

@@ -4,13 +4,12 @@ import React, { useEffect, useState } from "react";
 const MakeAdmin = () => {
   const [email, setEmail] = useState("");
   const [success, setSuccess] = useState(false);
-  const [allAdmin, setAllAdmin] = useState([]);
   const handleOnBlur = (e) => {
     setEmail(e.target.value);
   };
   const handleAdminSubmit = (e) => {
     const user = { email };
-    fetch("http://localhost:7000/users/admin", {
+    fetch("https://ancient-sands-65869.herokuapp.com/users/admin", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -28,7 +27,7 @@ const MakeAdmin = () => {
 
   return (
     <div>
-      <h2>Make an Admin</h2>
+      <h1 style={{ color: "#24C7AC" }}>Make an Admin</h1>
       <form onSubmit={handleAdminSubmit}>
         <TextField
           label="Put an email here to make an admin"
@@ -42,7 +41,11 @@ const MakeAdmin = () => {
           size="small"
         />
         <br />
-        <Button type="submit" variant="contained">
+        <Button
+          style={{ backgroundColor: "#24C7AC" }}
+          type="submit"
+          variant="contained"
+        >
           Make Admin
         </Button>
       </form>

@@ -19,20 +19,22 @@ const CycleDetails = () => {
   const onSubmit = (data) => {
     data.status = "pending";
     console.log(data);
-    axios.post("http://localhost:7000/orders", data).then((res) => {
-      console.log(res.data);
-      if (res.data.insertedId) {
-        alert("Order Placed Successfully");
-        reset();
-      }
-    });
+    axios
+      .post("https://ancient-sands-65869.herokuapp.com/orders", data)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.insertedId) {
+          alert("Order Placed Successfully");
+          reset();
+        }
+      });
   };
 
   const { cycleId } = useParams();
 
   const [cycle, setCycle] = useState([]);
   useEffect(() => {
-    const url = `http://localhost:7000/cycles/${cycleId}`;
+    const url = `https://ancient-sands-65869.herokuapp.com/cycles/${cycleId}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
