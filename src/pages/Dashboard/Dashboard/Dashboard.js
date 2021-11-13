@@ -27,6 +27,7 @@ import AddCycles from "../AddCycles/AddCycles";
 import MakeAdmin from "../MakeAdmin/MakeAdmin";
 import ManageOrders from "../ManageOrders/ManageOrders";
 import AdminRoute from "../../Login/AdminRoute/AdminRoute";
+import ManageCycles from "../ManageCycles/ManageCycles";
 
 const drawerWidth = 200;
 
@@ -96,6 +97,12 @@ const Dashboard = (props) => {
               style={{ textDecoration: "none", color: "#24C7AC" }}
             >
               <Button style={{ color: "white" }}>Manage Orders</Button>
+            </Link>
+            <Link
+              to={`${url}/manageCycles`}
+              style={{ textDecoration: "none", color: "#24C7AC" }}
+            >
+              <Button style={{ color: "white" }}>Manage Cycles</Button>
             </Link>
           </Box>
         )}
@@ -211,6 +218,9 @@ const Dashboard = (props) => {
           </AdminRoute>
           <AdminRoute path={`${path}/manageOrders`}>
             <ManageOrders></ManageOrders>
+          </AdminRoute>
+          <AdminRoute path={`${path}/manageCycles`}>
+            <ManageCycles></ManageCycles>
           </AdminRoute>
         </Switch>
       </Box>

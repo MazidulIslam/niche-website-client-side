@@ -12,8 +12,6 @@ import React, { useEffect, useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 
 const ManageOrders = () => {
-  const [id, setId] = useState("");
-
   const { user } = useAuth();
   const [orders, setOrders] = useState([]);
   const [status, setStatus] = useState();
