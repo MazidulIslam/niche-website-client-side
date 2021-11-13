@@ -17,13 +17,10 @@ const HomeCycles = () => {
     <Box sx={{ flexGrow: 1 }}>
       <Container>
         <Typography
-          sx={{ fontWeight: 500, m: 3, color: "success.main" }}
-          variant="h6"
+          sx={{ fontWeight: 600, color: "#24C7AC", marginTop: "45px" }}
+          variant="h4"
           component="div"
         >
-          Cycles
-        </Typography>
-        <Typography sx={{ fontWeight: 600 }} variant="h4" component="div">
           Explore Our Cycles
         </Typography>
         <Grid

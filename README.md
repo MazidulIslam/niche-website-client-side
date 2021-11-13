@@ -1,6 +1,6 @@
 # QUICLE || Explore Road King Bicycles
 
-Open [Quicle](https://quicle.web.app/) click to view it in the browser.
+Open [Quicle](https://quicle.web.app/) to view it in the browser.
 
 ### What You Can Do In This Website?
 
@@ -22,7 +22,7 @@ Open [Quicle](https://quicle.web.app/) click to view it in the browser.
 **This website is made with React, Express, Mongodb**
 
 - React Technology
-- React Router, React Hook Form, Material UI, Private Route,Admin Route, Context Api.
+- React Router, React Hook Form, Material UI, Private Route,Admin Route, Context Api,React Google Maps api, React Rating
 - used axios and dotenv
 - Firebase As Authentication
 - Server as Express.js

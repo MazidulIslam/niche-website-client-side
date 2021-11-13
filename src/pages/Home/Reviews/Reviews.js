@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useTheme } from "@mui/material/styles";
-import { Container, Grid } from "@mui/material";
+import { Container, Grid, Rating } from "@mui/material";
 import Box from "@mui/material/Box";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
@@ -68,9 +68,8 @@ const Reviews = () => {
                       <sub> "</sub>
                     </span>
                   </Typography>
-                  <Typography sx={{ mt: 5 }} variant="h6" component="div">
-                    Ratings: {review.ratings}
-                  </Typography>
+
+                  <Rating name="read-only" value={review.ratings} readOnly />
                   <Typography variant="h4" component="div">
                     {review.name}
                   </Typography>
