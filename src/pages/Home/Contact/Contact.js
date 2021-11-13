@@ -26,13 +26,15 @@ const Contact = ({ origin, destination }) => {
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    axios.post("http://localhost:7000/messages", data).then((res) => {
-      // console.log(res.data);
-      if (res.data.insertedId) {
-        alert("Sent Successfully");
-        reset();
-      }
-    });
+    axios
+      .post("https://ancient-sands-65869.herokuapp.com/messages", data)
+      .then((res) => {
+        // console.log(res.data);
+        if (res.data.insertedId) {
+          alert("Sent Successfully");
+          reset();
+        }
+      });
   };
   return (
     <div>

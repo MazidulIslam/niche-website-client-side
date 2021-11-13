@@ -41,7 +41,7 @@ const Dashboard = (props) => {
   };
 
   const drawer = (
-    <div>
+    <div style={{ backgroundColor: "#24C7AC", height: "100%", color: "black" }}>
       <Typography sx={{ mt: 2 }} variant="h6">
         Logged In As:
         <br />
@@ -51,29 +51,29 @@ const Dashboard = (props) => {
       <Box>
         {/* link start */}
         <Link to={`${url}`} style={{ textDecoration: "none" }}>
-          <Button style={{ color: "#24C7AC" }}>Dashboard</Button>
+          <Button style={{ color: "white" }}>Dashboard</Button>
         </Link>{" "}
         <br />
         <Link to="/cycles" style={{ textDecoration: "none" }}>
-          <Button style={{ color: "#24C7AC" }}>Purchase Cycle</Button>
+          <Button style={{ color: "white" }}>Purchase Cycle</Button>
         </Link>{" "}
         <br />
         <Link to={`${url}/myOrders`} style={{ textDecoration: "none" }}>
-          <Button style={{ color: "#24C7AC" }}>My Orders</Button>
+          <Button style={{ color: "white" }}>My Orders</Button>
         </Link>
         <br />
         <Link
           to={`${url}/pay`}
-          style={{ textDecoration: "none", color: "#24C7AC" }}
+          style={{ textDecoration: "none", color: "white" }}
         >
-          <Button style={{ color: "#24C7AC" }}>Pay</Button>
+          <Button style={{ color: "white" }}>Pay</Button>
         </Link>
         <br />
         <Link
           to={`${url}/addReview`}
-          style={{ textDecoration: "none", color: "#24C7AC" }}
+          style={{ textDecoration: "none", color: "white" }}
         >
-          <Button style={{ color: "#24C7AC" }}>Add Review</Button>
+          <Button style={{ color: "white" }}>Add Review</Button>
         </Link>
         {admin && (
           <Box>
@@ -81,21 +81,21 @@ const Dashboard = (props) => {
               to={`${url}/addCycles`}
               style={{ textDecoration: "none", color: "#24C7AC" }}
             >
-              <Button style={{ color: "#24C7AC" }}>Add Cycles</Button>
+              <Button style={{ color: "white" }}>Add Cycles</Button>
             </Link>
             <br />
             <Link
               to={`${url}/makeAdmin`}
               style={{ textDecoration: "none", color: "#24C7AC" }}
             >
-              <Button style={{ color: "#24C7AC" }}>Make Admin</Button>
+              <Button style={{ color: "white" }}>Make Admin</Button>
             </Link>
 
             <Link
               to={`${url}/manageOrders`}
               style={{ textDecoration: "none", color: "#24C7AC" }}
             >
-              <Button style={{ color: "#24C7AC" }}>Manage Orders</Button>
+              <Button style={{ color: "white" }}>Manage Orders</Button>
             </Link>
           </Box>
         )}
@@ -136,7 +136,9 @@ const Dashboard = (props) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Quicle
+            <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+              Quicle
+            </Link>
           </Typography>
         </Toolbar>
       </AppBar>
